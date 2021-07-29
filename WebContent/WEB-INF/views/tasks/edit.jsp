@@ -1,25 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:import url="../layout/app.jsp">
+    <c:param name="content">
+        <h2>id : ${task.id} のタスク編集ページ</h2>
 
-  <p><a href="${pageContext.request.contextPath}/index">タスク一覧に戻る</a></p>
-        <p><a href="#" onclick="confirmDestroy();">このタスクを削除する</a></p>
-        <form method="POST" action="${pageContext.request.contextPath}/destroy">
-            <input type="hidden" name="_token" value="${_token}" />
+        <form method="POST" action="${pageContext.request.contextPath}/update">
+            <c:import url="_form.jsp" />
         </form>
-        <script>
-        function confirmDestroy() {
-            if(confirm("本当に削除してよろしいですか？")) {
-                document.forms[1].submit();
-            }
-        }
-        </script>
 
-</body>
-</html>
+        <p><a href="${pageContext.request.contextPath}/index">タスク一覧に戻る</a></p>
+
+    </c:param>
+</c:import>
+
